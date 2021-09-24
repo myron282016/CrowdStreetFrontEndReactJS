@@ -1,0 +1,9 @@
+.youQualified {
+  font-size: 1.8rem!important;
+  text-transform: uppercase;
+  font-weight: 300!important;
+}
+.thanksMessage{
+  text-transform: uppercase;
+}
+.redirectHome{text-decoration:none;}
