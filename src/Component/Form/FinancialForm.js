@@ -35,8 +35,8 @@ export default function FinancialForm() {
     else if(creditScore < 300 || creditScore > 850 ){
       toast("Please Enter Valid Credit Score Between 300 to 850");
     }
-    else {
-      const res = await fetch("/investor/qualification", {
+    else{
+      const res = await fetch("http://prequalificationcrowdstreetnew-env.eba-aemgmeb4.us-east-2.elasticbeanstalk.com/investor/qualification", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -47,8 +47,9 @@ export default function FinancialForm() {
           const items = data;
           return items;
         });
-      console.log(res);
-      if (res.qualified === true) {
+        if ( res.status === 400){
+          toast(res.message);
+        } else if (res.qualified === true) {
         toast("You Are Qualified");
         localStorage.setItem("qualifiedData", res.message);
         history.push("/success");
